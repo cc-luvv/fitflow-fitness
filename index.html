@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FitFlow · 智能健身管理</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="enhancements.css" />
+  </head>
+  <body>
+    <aside class="sidebar">
+      <a class="brand" href="#"><span class="brand-mark">F</span><span>fitflow</span></a>
+      <nav>
+        <a class="nav-item active" href="#dashboard"><span>▦</span>今日概览</a>
+        <a class="nav-item" href="#plan"><span>⌁</span>智能规划</a>
+        <a class="nav-item" href="#training"><span>◈</span>训练中心</a>
+        <a class="nav-item" href="#nutrition"><span>◒</span>营养饮食</a>
+        <a class="nav-item" href="#progress"><span>◌</span>身体数据</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="tip-card"><span class="spark">✦</span><p>坚持训练<br/>也要好好恢复</p><small>查看恢复建议 →</small></div>
+        <button class="profile" id="profileButton"><span class="avatar mini" id="avatarInitial">?</span><span id="sidebarName">尚未设置<br/><small>创建个人档案</small></span><b>···</b></button>
+      </div>
+    </aside>
+
+    <main>
+      <header class="topbar">
+        <div><p class="eyebrow">WED, 12 NOV</p><h1 id="welcomeTitle">你好，开始建立你的计划 <span>✦</span></h1></div>
+        <div class="top-actions"><button class="icon-button">⌕</button><button class="icon-button notice">♧</button><button class="plan-button" id="openProfile">创建我的档案</button></div>
+      </header>
+
+      <section class="hero" id="dashboard">
+        <div class="hero-copy"><p class="eyebrow mint">TODAY'S FOCUS</p><h2>胸部力量 · 渐进超负荷</h2><p>依据你的目标、健身房器械与恢复状态，今天安排了 <strong>55 分钟</strong> 的推训练。</p><div class="hero-meta"><span>◷ 18:30 – 19:25</span><span>⌖ 海淀劲松健身</span></div><button class="dark-button" id="startTraining">开始今天训练 <i>→</i></button></div>
+        <div class="hero-visual"><div class="orbit o1"></div><div class="orbit o2"></div><div class="exercise-card"><span class="lift-icon">⌁</span><div><small>今日第一项</small><b>杠铃卧推</b><span>4 组 × 8–10 次</span></div></div><div class="stat-bubble"><b>78%</b><span>训练完成度</span></div></div>
+      </section>
+
+      <section class="metrics">
+        <article><div class="metric-title"><span>训练进度</span><b>▴ 12%</b></div><div class="metric-value">18 <small>/ 24 次</small></div><div class="bar"><i style="width:75%"></i></div><p>本月已完成 18 次训练</p></article>
+        <article><div class="metric-title"><span>今日蛋白质</span><b class="warm">还差 32g</b></div><div class="metric-value">108<small>g / 140g</small></div><div class="bar amber"><i style="width:77%"></i></div><p>晚餐优先补充高蛋白食材</p></article>
+        <article><div class="metric-title"><span>体重趋势</span><b>▾ 0.2kg</b></div><div class="metric-value">68.4<small>kg</small></div><svg viewBox="0 0 180 45" class="sparkline"><path d="M2 34 C18 32, 20 18, 36 24 S55 28, 68 18 S89 17, 102 22 S123 9, 139 15 S160 9, 178 4" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M2 34 C18 32, 20 18, 36 24 S55 28, 68 18 S89 17, 102 22 S123 9, 139 15 S160 9, 178 4 V45 H2Z" fill="currentColor" opacity=".09"/></svg><p>近 14 天 · 稳定增肌中</p></article>
+      </section>
+
+      <div class="section-heading"><div><p class="eyebrow">PERSONALIZED ENGINE</p><h2>让计划跟着你的生活走</h2></div><button class="text-button" id="generate">重新生成方案 <span>→</span></button></div>
+      <section class="planner" id="plan">
+        <div class="planner-intro"><span class="section-number">01</span><h3>设定今日方向</h3><p>每一个选择都会进入你的训练与营养决策器。</p></div>
+        <div class="goal-grid">
+          <button class="choice selected" data-group="goal" data-value="增肌"><span class="choice-icon peach">↗</span><b>增肌塑形</b><small>温和热量盈余 · 肌肉增长</small><i>✓</i></button>
+          <button class="choice" data-group="goal" data-value="减脂"><span class="choice-icon blue">↘</span><b>减脂维持</b><small>控制热量 · 保住肌肉</small><i>✓</i></button>
+          <button class="choice" data-group="goal" data-value="力量"><span class="choice-icon lilac">⌁</span><b>力量提升</b><small>提高核心动作表现</small><i>✓</i></button>
+        </div>
+        <div class="mini-controls"><label>训练时长<select id="duration"><option>45 分钟</option><option selected>55 分钟</option><option>75 分钟</option><option>自定义</option></select></label><label>训练时间<input type="time" value="18:30" id="time"/></label><label class="custom-time hidden" id="customTime">自定义时长<input type="number" placeholder="分钟" min="15" max="240"/></label></div>
+      </section>
+
+      <section class="two-col" id="training">
+        <article class="panel equipment-panel"><div class="panel-title"><div><span class="section-number">02</span><h3>你的训练场地</h3></div><button class="text-button" id="locateGym">⌖ 使用当前位置</button></div><div class="place-search"><input id="gymInput" placeholder="搜索健身房名称或详细地址"/><button id="searchGym">搜索</button></div><div class="search-result hidden" id="gymResults"></div><div class="location empty-location" id="gymLocation"><span class="location-pin">⌖</span><div><b id="gymName">尚未选择健身房</b><small id="gymAddress">请搜索并从结果中确认地点，或直接手动勾选器械。</small></div></div><p class="panel-copy">也可以勾选你当前可用的器械，训练会自动避开没有的动作。</p><div class="equipment-list">
+          <label><input type="checkbox" checked/><span>杠铃架</span></label><label><input type="checkbox" checked/><span>哑铃</span></label><label><input type="checkbox" checked/><span>绳索器械</span></label><label><input type="checkbox" checked/><span>坐姿推胸</span></label><label><input type="checkbox"/><span>双杠</span></label><label><input type="checkbox" checked/><span>跑步机</span></label>
+        </div><button class="outline-button" id="addEquipment">＋ 添加我的器械</button></article>
+        <article class="panel focus-panel"><div class="panel-title"><div><span class="section-number">03</span><h3>今天特别想练</h3></div><span class="optional">可多选</span></div><p class="panel-copy">点击身体图或部位标签，查看对应肌群与建议动作。</p><div class="body-map"><div class="body-visual"><svg viewBox="0 0 160 260" aria-label="正面肌肉示意图"><circle cx="80" cy="28" r="19" class="skin"/><path class="skin" d="M60 49 Q80 40 100 49 L117 72 110 123 102 151 106 225 89 225 80 166 71 225 54 225 58 151 50 123 43 72Z"/><path data-muscle="肩部" class="muscle-shape" d="M58 53 Q48 54 42 70 L54 77 65 64ZM102 53 Q112 54 118 70 L106 77 95 64Z"/><path data-muscle="胸部" class="muscle-shape active-shape" d="M61 70 Q70 62 79 72 L79 101 Q67 101 57 91ZM81 72 Q90 62 99 70 L103 91 Q93 101 81 101Z"/><path data-muscle="二头肌" class="muscle-shape" d="M44 77 Q36 94 43 116 L53 112 56 88ZM116 77 Q124 94 117 116 L107 112 104 88Z"/><path data-muscle="核心" class="muscle-shape" d="M63 106 L78 106 77 146 62 143ZM82 106 L97 106 98 143 83 146Z"/><path data-muscle="腿部" class="muscle-shape" d="M59 151 L77 151 72 218 55 218ZM83 151 L101 151 105 218 88 218Z"/></svg><small id="muscleCaption">胸大肌 · 胸小肌</small></div><div class="muscles"><button class="muscle active" data-muscle="胸部">胸部</button><button class="muscle" data-muscle="二头肌">二头肌</button><button class="muscle" data-muscle="肩部">肩部</button><button class="muscle" data-muscle="背部">背部</button><button class="muscle" data-muscle="核心">核心</button><button class="muscle" data-muscle="腿部">腿部</button></div></div><div class="exercise-prescription" id="exercisePrescription"><p class="eyebrow">CHEST · 推荐动作</p><b>杠铃卧推</b><span>胸大肌（中部） · 三头肌 · 前束三角肌</span><small>4 组 × 8–10 次 · 组间休息 90 秒</small></div><div class="focus-note"><span>✦</span><p>已为胸部增加 <b>2 组有效训练量</b>，不会影响恢复。</p></div></article>
+      </section>
+
+      <section class="section-heading nutrition-heading" id="nutrition"><div><p class="eyebrow">NUTRITION DECISION MAKER</p><h2>你的食材，变成今天的燃料</h2><p>基于增肌目标：2,460 kcal · 蛋白质 140g · 碳水 310g</p></div><button class="outline-button" id="editFoods">管理现有食材</button></section>
+      <section class="food-source"><div class="source-tabs"><button class="source active" data-source="home">⌂ 我现有的食材</button><button class="source" data-source="canteen">♜ 食堂 / 附近</button></div><div class="food-chips" id="foodChips"><span>鸡胸肉</span><span>鸡蛋</span><span>燕麦</span><span>西兰花</span><span>香蕉</span><button>＋ 添加</button></div><div class="canteen-search hidden" id="canteenSearch"><input id="placeInput" placeholder="输入学校、公司、园区或食堂名称"/><button id="searchCanteen">搜索</button><div class="search-result hidden" id="canteenResults"></div></div></section>
+      <section class="meal-grid">
+        <article class="meal-card"><div class="meal-top"><span>07:30 · 早餐</span><b>612 kcal</b></div><h3>高蛋白燕麦碗</h3><p>燕麦、希腊酸奶、香蕉、鸡蛋</p><div class="macro"><span>蛋白 <b>36g</b></span><span>碳水 <b>74g</b></span><span>脂肪 <b>18g</b></span></div><button class="meal-swap">↻ 换一个搭配</button></article>
+        <article class="meal-card featured"><div class="meal-top"><span>12:20 · 午餐</span><b>835 kcal</b></div><h3>香煎鸡胸肉能量餐</h3><p>鸡胸肉、糙米、西兰花、牛油果</p><div class="macro"><span>蛋白 <b>56g</b></span><span>碳水 <b>98g</b></span><span>脂肪 <b>22g</b></span></div><button class="meal-swap">↻ 换一个搭配</button></article>
+        <article class="meal-card"><div class="meal-top"><span>20:15 · 训练后晚餐</span><b>731 kcal</b></div><h3>牛肉番茄意面</h3><p>瘦牛肉、全麦意面、番茄、菠菜</p><div class="macro"><span>蛋白 <b>48g</b></span><span>碳水 <b>90g</b></span><span>脂肪 <b>17g</b></span></div><button class="meal-swap">↻ 换一个搭配</button></article>
+      </section>
+      <footer>FitFlow · 计划仅作日常健身参考，如有疾病或伤病请咨询专业人士。</footer>
+    </main>
+
+    <div class="modal hidden" id="profileModal"><div class="modal-card"><button class="close" data-close>×</button><p class="eyebrow">BODY PROFILE</p><h2>建立身体档案</h2><p>上传正面/侧面照片，仅用于生成体态追踪参考。</p><label class="name-field">你的名字<input id="userName" placeholder="例如：小王" maxlength="20"/></label><label class="photo-upload" id="photoArea"><input type="file" accept="image/*" id="photoInput"/><span>＋</span><b>上传身形照片</b><small>PNG、JPG，建议自然光下拍摄</small></label><div class="form-row"><label>身高<input placeholder="例如：175" type="number"/> <small>cm</small></label><label>体重<input placeholder="例如：68.4" type="number" step=".1"/> <small>kg</small></label></div><button class="dark-button full" id="saveProfile">保存并更新计划 →</button></div></div>
+    <div class="toast" id="toast">计划已根据你的选择更新</div>
+    <script src="app.js"></script>
+  </body>
+</html>
